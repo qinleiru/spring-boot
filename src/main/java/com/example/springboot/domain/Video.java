@@ -2,6 +2,7 @@ package com.example.springboot.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class Video implements Serializable {
     private int id;
@@ -10,6 +11,16 @@ public class Video implements Serializable {
     private int price;
     private String coverImg;
     private Date createTime;
+    private List<Chapter> chapterList;
+
+    public List<Chapter> getChapterList() {
+        return chapterList;
+    }
+
+    public void setChapterList(List<Chapter> chapterList) {
+        this.chapterList = chapterList;
+    }
+
     public Video(){
 
     }
@@ -78,6 +89,7 @@ public class Video implements Serializable {
                 ", price=" + price +
                 ", coverImg='" + coverImg + '\'' +
                 ", createTime=" + createTime +
+                ", chapterList=" + chapterList +
                 '}';
     }
 }

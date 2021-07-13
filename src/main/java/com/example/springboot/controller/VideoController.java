@@ -1,14 +1,14 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.domain.User;
+import com.example.springboot.domain.Video;
 import com.example.springboot.service.VideoService;
 import com.example.springboot.tool.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //@Controller 返回不会序列化会JSON字符串
@@ -21,8 +21,15 @@ public class VideoController {
 
     //@RequestMapping("list")
     @GetMapping("list")
-    public Object list(){
-
+    public JsonData list(){
+        List<Video> list=videoService.listVideo();
+        System.out.println(111);
         return JsonData.buildSuccess(videoService.listVideo());
+    }
+
+    @PostMapping("save_video_chapter")
+    public JsonData saveVideo(@RequestBody Video video){
+        System.out.println(video.toString());
+       return JsonData.buildSuccess("");
     }
 }
